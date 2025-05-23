@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from core.settings.environment import Environment
 from core.clients.endpoints import Endpoints
-from core.settings.config import Users, Timeouts, ID
+from core.settings.config import Users, Timeouts
 import allure
 
 load_dotenv()
@@ -65,9 +65,9 @@ class APIClient:
         with allure.step('Updating header with authorization'):
             self.session.headers.update({'Authorization' : f'Bearer {token}'})
 
-    def get_booking_by_id(self):
+    def get_booking_by_id(self, booking_id):
         with allure.step('Getting booking by id'):
-            url = f'{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{ID.TESTID}'
+            url = f'{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}'
             response = self.session.get(url)
             response.raise_for_status()
         with allure.step('Assert status code'):
