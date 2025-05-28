@@ -11,6 +11,7 @@ import allure
 load_dotenv()
 
 class APIClient:
+    @property
     def __init__(self):
         environment_str = os.getenv('ENVIRONMENT')
         try:
@@ -88,7 +89,7 @@ class APIClient:
     def create_booking(self, booking_data):
         with allure.step('Creating booking'):
             url = f'{self.base_url}{Endpoints.BOOKING_ENDPOINT.value}'
-            response = self.session.post(url, json=booking_data)
+            response = self.session.post(url, headers={'Accept': 'application/json'}, json=booking_data)
             response.raise_for_status()
         with allure.step('Checking status code'):
             assert response.status_code == 200, f'Expected status code 200 but got {response.status_code}'

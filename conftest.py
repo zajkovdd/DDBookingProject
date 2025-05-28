@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 @pytest.fixture(scope='session')
 def api_client():
-    client = APIClient()
+    client = APIClient
     client.auth()
     return client
 
@@ -35,7 +35,7 @@ def generate_random_booking_data(booking_dates):
         'lastname': lastname,
         'totalprice': totalprice,
         'depositpaid': depositpaid,
-        'booking_date': booking_dates,
+        'bookingdates': booking_dates,
         'additionalneeds': additionalneeds
     }
 
