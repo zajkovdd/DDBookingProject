@@ -6,4 +6,4 @@ import allure
 def test_data_after_create_booking(api_client, generate_random_booking_data):
     booking_data = generate_random_booking_data
     response = api_client.create_booking(booking_data=booking_data)
-    assert response.json == booking_data, f'Expected similar response but got {response.json}'
+    assert response == booking_data, f'Expected similar response but got {response}'
