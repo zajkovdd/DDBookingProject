@@ -11,7 +11,6 @@ import allure
 load_dotenv()
 
 class APIClient:
-    @property
     def __init__(self):
         environment_str = os.getenv('ENVIRONMENT')
         try:
