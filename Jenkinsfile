@@ -5,7 +5,6 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 // Шаг создания виртуального окружения и активации его
-                sh 'which python3 && which python3-pip'
                 sh 'python3 -m venv venv'
                 sh '. venv/bin/activate'
                 // Установка зависимостей из requirements.txt
