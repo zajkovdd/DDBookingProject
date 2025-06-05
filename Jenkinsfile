@@ -5,6 +5,7 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 // Шаг создания виртуального окружения и активации его
+                sh 'which python3 && which pip'
                 sh 'python3 -m venv venv'
                 sh '. venv/bin/activate'
                 // Установка зависимостей из requirements.txt
@@ -15,6 +16,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Запуск тестов и генерация отчёта Allure
+                sh '. venv/bin/activate'
                 sh 'python3 -m pytest --alluredir allure-results'
             }
         }
